@@ -9,7 +9,7 @@ source:
   md5: 268f2d29b976a5ac06b41e1408788832
 
 build:
-  number: 3
+  number: 4
   detect_binary_files_with_prefix: true
   run_exports:
     - {{ pin_subpackage('qt6-datavis3d', max_pin='x.x') }}
@@ -122,8 +122,14 @@ test:
   source_files:
     - examples/
   commands:
-    - test -f $PREFIX/include/qt6/QtDataVisualization/Q3DBars  # [unix]
-    - test -f $PREFIX/lib/libQt6DataVisualization${SHLIB_EXT}  # [unix]
+    {% set qt_libs = ["DataVisualization", "DataVisualizationQml"] %}
+    {% for each_qt_lib in qt_libs %}
+    - test -d $PREFIX/include/qt6/Qt{{ each_qt_lib }}  # [unix]
+    - test -f $PREFIX/lib/libQt6{{ each_qt_lib }}${SHLIB_EXT}  # [unix]
+    - if not exist %PREFIX%\\Library\\include\\qt6\\Qt{{ each_qt_lib }} exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\Qt6{{ each_qt_lib }}.lib exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\bin\\Qt6{{ each_qt_lib }}.dll exit 1  # [win]
+    {% endfor %}
 
 about:
   home: http://qt-project.org
