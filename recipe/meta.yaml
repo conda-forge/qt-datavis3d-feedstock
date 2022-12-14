@@ -14,7 +14,6 @@ build:
   run_exports:
     - {{ pin_subpackage('qt6-datavis3d', max_pin='x.x') }}
 
-
 requirements:
   build:
     - cmake
