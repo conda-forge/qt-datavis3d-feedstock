@@ -1,5 +1,10 @@
 #!/bin/sh
 
+grep -nr defaultFramebufferObject ${SP_DIR}/PySide6
+${PYTHON} -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
+
+exit 0
+
 if test "$CONDA_BUILD_CROSS_COMPILATION" = "1"
 then
   CMAKE_ARGS="${CMAKE_ARGS} -DQT_HOST_PATH=${BUILD_PREFIX}"

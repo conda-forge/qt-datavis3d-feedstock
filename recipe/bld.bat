@@ -1,4 +1,7 @@
 
+%PYTHON% -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
+exit 0
+
 mkdir build && cd build
 cmake -LAH -G "Ninja" ^
     -DCMAKE_BUILD_TYPE=Release ^

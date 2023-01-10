@@ -68,7 +68,11 @@ requirements:
     - {{ cdt('xcb-util-renderutil-devel') }}  # [linux]
     - {{ cdt('xcb-util-wm-devel') }}          # [linux]
   host:
+    - python
     - qt6-main
+    - pyside6
+  run:
+    - python
 
 test:
   requires:
