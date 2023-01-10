@@ -1,6 +1,6 @@
 #!/bin/sh
 
-grep -nr defaultFramebufferObject ${SP_DIR}/PySide6
+grep -nr defaultFramebufferObject ${SP_DIR}/PySide2
 ${PYTHON} -c "from PySide2.QtWidgets       import QOpenGLWidget; from PySide2.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
 # ${PYTHON} -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
 
