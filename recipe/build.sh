@@ -1,9 +1,18 @@
 #!/bin/sh
 
+XVFB_RUN=""
+if test `uname` = "Linux"
+then
+  cp -r /usr/include/xcb ${PREFIX}/include/qt
+  XVFB_RUN="xvfb-run -s '-screen 0 640x480x24'"
+fi
+
 cd ${RECIPE_DIR}/hello
 cmake -LAH -G "Ninja" ${CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${PREFIX} -DCMAKE_FIND_FRAMEWORK=LAST .
 cmake --build .
-./hello
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:-}" != "" ]]; then
+  eval ${XVFB_RUN} ./hello
+fi
 
 grep -nr defaultFramebufferObject ${SP_DIR}/PySide2 || "echo no defaultFramebufferObject in PySide2"
 grep -nr defaultFramebufferObject ${PREFIX}/lib || "echo no defaultFramebufferObject in PREFIX/lib"
