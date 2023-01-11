@@ -10,15 +10,18 @@ fi
 cd ${RECIPE_DIR}/hello
 cmake -LAH -G "Ninja" ${CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${PREFIX} -DCMAKE_FIND_FRAMEWORK=LAST .
 cmake --build .
+
+grep -nr defaultFramebufferObject ${SP_DIR}/PySide2 || echo "no defaultFramebufferObject in PySide2"
+grep -nr defaultFramebufferObject ${PREFIX}/lib || echo "no defaultFramebufferObject in PREFIX/lib"
+grep -nr defaultFramebufferObject ${PREFIX}/include || echo "no defaultFramebufferObject in PREFIX/include"
+
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR:-}" != "" ]]; then
   eval ${XVFB_RUN} ./hello
-fi
 
-grep -nr defaultFramebufferObject ${SP_DIR}/PySide2 || "echo no defaultFramebufferObject in PySide2"
-grep -nr defaultFramebufferObject ${PREFIX}/lib || "echo no defaultFramebufferObject in PREFIX/lib"
-grep -nr defaultFramebufferObject ${PREFIX}/include || "echo no defaultFramebufferObject in PREFIX/include"
-${PYTHON} -c "from PySide2.QtWidgets       import QOpenGLWidget; from PySide2.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
-# ${PYTHON} -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
+  ${PYTHON} -c "from PySide2.QtWidgets       import QOpenGLWidget; from PySide2.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print('python.obj.defaultFramebufferObject', obj.defaultFramebufferObject())"
+  # ${PYTHON} -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
+
+fi
 
 exit 0
 
