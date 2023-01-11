@@ -1,6 +1,13 @@
 #!/bin/sh
 
-grep -nr defaultFramebufferObject ${SP_DIR}/PySide2
+cd ${RECIPE_DIR}/hello
+cmake -LAH -G "Ninja" ${CMAKE_ARGS} -DCMAKE_PREFIX_PATH=${PREFIX} -DCMAKE_FIND_FRAMEWORK=LAST .
+cmake --build .
+./hello
+
+grep -nr defaultFramebufferObject ${SP_DIR}/PySide2 || "echo no defaultFramebufferObject in PySide2"
+grep -nr defaultFramebufferObject ${PREFIX}/lib || "echo no defaultFramebufferObject in PREFIX/lib"
+grep -nr defaultFramebufferObject ${PREFIX}/include || "echo no defaultFramebufferObject in PREFIX/include"
 ${PYTHON} -c "from PySide2.QtWidgets       import QOpenGLWidget; from PySide2.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
 # ${PYTHON} -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
 

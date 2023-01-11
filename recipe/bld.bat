@@ -1,4 +1,10 @@
 
+
+cd %RECIPE_DIR%\hello
+cmake -LAH -G "Ninja" -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_BUILD_TYPE=Release .
+cmake --build . --config Release
+.\hello.exe
+
 %PYTHON% -c "from PySide2.QtWidgets import QOpenGLWidget; from PySide2.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
 rem  %PYTHON% -c "from PySide6.QtOpenGLWidgets import QOpenGLWidget; from PySide6.QtWidgets import QApplication; app = QApplication(); obj = QOpenGLWidget(); print(obj.defaultFramebufferObject())"
 exit 0
