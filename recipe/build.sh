@@ -5,7 +5,6 @@ then
   CMAKE_ARGS="${CMAKE_ARGS} -DQT_HOST_PATH=${BUILD_PREFIX}"
 fi
 
-mkdir build && cd build
 cmake -LAH -G "Ninja" ${CMAKE_ARGS} \
   -DCMAKE_PREFIX_PATH=${PREFIX} \
   -DCMAKE_FIND_FRAMEWORK=LAST \
@@ -20,6 +19,5 @@ cmake -LAH -G "Ninja" ${CMAKE_ARGS} \
   -DINSTALL_INCLUDEDIR=include/qt6 \
   -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
   -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
-  ..
-cmake --build . --target install
-
+  -B build .
+cmake --build build --target install
