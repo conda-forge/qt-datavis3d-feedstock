@@ -4,16 +4,7 @@ cmake -LAH -G "Ninja" ^
     -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
     -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
     -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=32 ^
-    -DINSTALL_BINDIR=lib/qt6/bin ^
-    -DINSTALL_PUBLICBINDIR=bin ^
-    -DINSTALL_LIBEXECDIR=lib/qt6 ^
-    -DINSTALL_DOCDIR=share/doc/qt6 ^
-    -DINSTALL_ARCHDATADIR=lib/qt6 ^
-    -DINSTALL_DATADIR=share/qt6 ^
-    -DINSTALL_INCLUDEDIR=include/qt6 ^
-    -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs ^
-    -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples ^
-    -DINSTALL_DATADIR=share/qt6 ^
+    -DCMAKE_MESSAGE_LOG_LEVEL=STATUS ^
     -B build .
 if errorlevel 1 exit 1
 
