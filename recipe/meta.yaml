@@ -9,7 +9,7 @@ source:
   md5: 2c41957387ee5f015ed3066f3c9ac477
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
   run_exports:
     - {{ pin_subpackage('qt6-datavis3d', max_pin='x.x') }}
