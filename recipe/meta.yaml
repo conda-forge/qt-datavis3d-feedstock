@@ -1,4 +1,4 @@
-{% set version = "6.6.3" %}
+{% set version = "6.7.0" %}
 
 package:
   name: qt6-datavis3d
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://download.qt.io/official_releases/qt/{{ version.rpartition('.')[0] }}/{{ version }}/submodules/qtdatavis3d-everywhere-src-{{ version }}.tar.xz
-  md5: d9d57fbab82238a0ba230f62152d70ce
+  md5: 192b88eb6961ed098a4e6a8cdaa2bb83
 
 build:
   number: 0
