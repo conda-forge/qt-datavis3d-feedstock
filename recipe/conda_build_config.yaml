@@ -4,10 +4,6 @@ c_stdlib_version:          # [osx]
 MACOSX_SDK_VERSION:        # [osx]
   - '12.3'                 # [osx]
 
-
-c_stdlib_version:   # [linux]
-  - "2.17"          # [linux]
-
 # Using vs2022
 c_compiler:    # [win]
 - vs2022       # [win]
