@@ -3,7 +3,7 @@ About qt-datavis3d-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/qt-datavis3d-feedstock/blob/main/LICENSE.txt)
 
-Home: http://qt-project.org
+Home: http://qt-project.org/
 
 Package license: GPL-3.0-only
 
@@ -15,7 +15,6 @@ Documentation: http://doc.qt.io/
 
 Qt helps you create connected devices, UIs & applications that run
 anywhere on any device, on any operating system at any time.
-
 
 Current build status
 ====================
