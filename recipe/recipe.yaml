@@ -1,5 +1,5 @@
 context:
-  version: "6.11.1"
+  version: "6.11.2"
   maj_min: ${{ (version | split('.'))[:2] | join('.') }}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://download.qt.io/official_releases/qt/${{ maj_min }}/${{ version }}/submodules/qtdatavis3d-everywhere-src-${{ version }}.tar.xz
-  md5: 55cfcc453fd10d9293eac5dcc05c8a4a
+  md5: 4792335ed184c0323b82aa9c80c292a0
 
 build:
   number: 0
